@@ -1,0 +1,84 @@
+#!/bin/sh
+
+set -e
+
+if [ -e /.init ]; then
+	exit
+fi
+
+touch /.init
+
+mkdir -p /conf.d/transmission-daemon
+
+RUN_USER_NAME=${RUN_USER_NAME:-forumi0721}
+RUN_USER_UID=${RUN_USER_UID:-1000}
+RUN_USER_GID=${RUN_USER_GID:-100}
+
+USER_NAME=${USER_NAME:-forumi0721}
+USER_PASSWD=$([ ! -z "${USER_EPASSWD}" ] && echo ${USER_EPASSWD} | base64 -d 2>/dev/null || echo ${USER_PASSWD:-passwd})
+
+TR_DOWNLOAD_DIR=${TR_DOWNLOAD_DIR:-/data}
+TR_BLOCKLIST_URL=${TR_BLOCKLIST_URL}
+TR_PREALLOCATION=${TR_PREALLOCATION}
+TR_RATIO_LIMIT=${TR_RATIO_LIMIT}
+TR_RPC_WHITELIST=${TR_RPC_WHITELIST}
+TR_SPEED_LIMIT_DOWN=${TR_SPEED_LIMIT_DOWN}
+TR_SPEED_LIMIT_UP=${TR_SPEED_LIMIT_UP}
+TR_PEER_PORT=${TR_PEER_PORT}
+
+docker-adduser -u ${RUN_USER_UID} -g ${RUN_USER_GID} -H /dev/null -S /sbin/nologin -R ${RUN_USER_NAME}
+
+docker-chown ${RUN_USER_NAME} /conf.d/transmission-daemon
+
+if [ ! -s /conf.d/transmission-daemon/settings.json ]; then
+	transmission-daemon -d &> /tmp/settings.json
+
+	sed -i -e "s@\(\"rpc-authentication-required\"\): .*\$@\1: true,@g" -e "s/\(\"rpc-username\"\): .*$/\1: \"${USER_NAME}\",/g" -e "s/\(\"rpc-password\"\): .*$/\1: \"${USER_PASSWD}\",/g" /tmp/settings.json
+
+	sed -i -e "s@\(\"download-dir\"\): .*\$@\1: \"${TR_DOWNLOAD_DIR}\",@g" -e "s@\(\"incomplete-dir\"\): .*\$@\1: \"${TR_DOWNLOAD_DIR}\",@g" /tmp/settings.json
+
+	if [ ! -z "${TR_BLOCKLIST_URL}" ]; then
+		sed -i -e "s@\(\"blocklist-url\"\): .*\$@\1: \"${TR_BLOCKLIST_URL}\",@g" -e "s@\(\"blocklist-enabled\"\): .*\$@\1: true,@g" /tmp/settings.json
+	fi
+
+	if [ ! -z "${TR_PREALLOCATION}" ]; then
+		sed -i -e "s@\(\"preallocation\"\): .*\$@\1: ${TR_PREALLOCATION},@g" /tmp/settings.json
+	fi
+
+	if [ ! -z "${TR_RATIO_LIMIT}" ]; then
+		sed -i -e "s@\(\"ratio-limit\"\): .*\$@\1: ${TR_RATIO_LIMIT},@g" -e "s@\(\"ratio-limit-enabled\"\): .*\$@\1: true,@g" /tmp/settings.json
+	else
+		sed -i -e "s@\(\"ratio-limit-enabled\"\): .*\$@\1: false,@g" /tmp/settings.json
+	fi
+
+	if [ ! -z "${TR_RPC_WHITELIST}" ]; then
+		sed -i -e "s@\(\"rpc-whitelist\"\): .*\$@\1: \"${TR_RPC_WHITELIST}\",@g" -e "s@\(\"rpc-whitelist-enabled\"\): .*\$@\1: true,@g" /tmp/settings.json
+	else
+		sed -i -e "s@\(\"rpc-whitelist-enabled\"\): .*\$@\1: false,@g" /tmp/settings.json
+	fi
+
+	if [ ! -z "${TR_SPEED_LIMIT_DOWN}" ]; then
+		sed -i -e "s@\(\"speed-limit-down\"\): .*\$@\1: ${TR_SPEED_LIMIT_DOWN},@g" -e "s@\(\"speed-limit-down-enabled\"\): .*\$@\1: true,@g" /tmp/settings.json
+	else
+		sed -i -e "s@\(\"speed-limit-down-enabled\"\): .*\$@\1: false,@g" /tmp/settings.json
+	fi
+
+	if [ ! -z "${TR_SPEED_LIMIT_UP}" ]; then
+		sed -i -e "s@\(\"speed-limit-up\"\): .*\$@\1: ${TR_SPEED_LIMIT_UP},@g" -e "s@\(\"speed-limit-up-enabled\"\): .*\$@\1: true,@g" /tmp/settings.json
+	else
+		sed -i -e "s@\(\"speed-limit-up-enabled\"\): .*\$@\1: false,@g" /tmp/settings.json
+	fi
+
+	if [ ! -z "${TR_PEER_PORT}" ]; then
+		sed -i -e "s@\(\"peer-port\"\): .*\$@\1: ${TR_PEER_PORT},@g" /tmp/settings.json
+	fi
+
+	#etc
+	sed -i -e "s@\(\"seed-queue-enabled\"\): .*\$@\1: true,@g" -e "s@\(\"seed-queue-size\"\): .*\$@\1: 5,@g" /tmp/settings.json
+
+	cat /tmp/settings.json > /conf.d/transmission-daemon/settings.json
+	rm -rf /tmp/settings.json
+fi
+
+docker-chown ${RUN_USER_NAME} /conf.d/transmission-daemon/settings.json
+

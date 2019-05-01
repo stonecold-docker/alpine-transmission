@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+docker-install -r -u -c transmission-daemon transmission-cli
+
+mkdir -p /conf.d
+mkdir -p /conf.d/transmission-daemon
+touch /conf.d/transmission-daemon/settings.json
+
+mkdir -p /data
+

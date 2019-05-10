@@ -2,7 +2,7 @@
 
 set -e
 
-docker-install -r -u -c transmission-daemon transmission-cli
+docker-install -r -u -c su-exec transmission-daemon transmission-cli
 
 mkdir -p /conf.d
 mkdir -p /conf.d/transmission-daemon

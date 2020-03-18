@@ -2,6 +2,8 @@
 
 set -e
 
+[ -e /usr/local/bin/docker-env ] && . /usr/local/bin/docker-env
+
 [ -x /usr/local/bin/docker-binfmt ] && /usr/local/bin/docker-binfmt
 
 [ -x /usr/local/bin/docker-run-pre ] && /usr/local/bin/docker-run-pre
@@ -11,6 +13,6 @@ set -e
 if [ -x /usr/local/bin/docker-run-alt ]; then
 	exec /usr/local/bin/docker-run-alt "${@}"
 else
-	exec transmission.sh
+	exec /usr/local/bin/start_transmission.sh
 fi
 

@@ -2,11 +2,23 @@
 
 set -e
 
-docker-install -r -u -c su-exec transmission-daemon transmission-cli
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Installing required packages"
+PKG_LIB="su-exec transmission-daemon transmission-cli"
+PKG_DEV=""
+docker-install -r -u ${PKG_LIB} ${PKG_DEV}
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
+echo
 
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Uninstalling unnecessary packages"
+docker-install -d -c ${PKG_DEV}
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
+echo
+
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Setting basic configurations"
 mkdir -p /conf.d
 mkdir -p /conf.d/transmission-daemon
 touch /conf.d/transmission-daemon/settings.json
-
 mkdir -p /data
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
+echo
 

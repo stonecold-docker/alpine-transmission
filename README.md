@@ -1,11 +1,23 @@
 # alpine-transmission
 
 #### [alpine-x64-transmission](https://hub.docker.com/r/forumi0721alpinex64/alpine-x64-transmission/)
-[![](https://images.microbadger.com/badges/version/forumi0721alpinex64/alpine-x64-transmission.svg)](https://microbadger.com/images/forumi0721alpinex64/alpine-x64-transmission "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/forumi0721alpinex64/alpine-x64-transmission.svg)](https://microbadger.com/images/forumi0721alpinex64/alpine-x64-transmission "Get your own image badge on microbadger.com") [![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpinex64/alpine-x64-transmission.svg?style=flat-square)](https://hub.docker.com/r/forumi0721alpinex64/alpine-x64-transmission/) [![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpinex64/alpine-x64-transmission.svg?style=flat-square)](https://hub.docker.com/r/forumi0721alpinex64/alpine-x64-transmission/)
+![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/forumi0721alpinex64/alpine-x64-transmission/latest)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721alpinex64/alpine-x64-transmission/latest)
+![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/forumi0721alpinex64/alpine-x64-transmission/latest)
+![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpinex64/alpine-x64-transmission)
+![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpinex64/alpine-x64-transmission)
 #### [alpine-aarch64-transmission](https://hub.docker.com/r/forumi0721alpineaarch64/alpine-aarch64-transmission/)
-[![](https://images.microbadger.com/badges/version/forumi0721alpineaarch64/alpine-aarch64-transmission.svg)](https://microbadger.com/images/forumi0721alpineaarch64/alpine-aarch64-transmission "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/forumi0721alpineaarch64/alpine-aarch64-transmission.svg)](https://microbadger.com/images/forumi0721alpineaarch64/alpine-aarch64-transmission "Get your own image badge on microbadger.com") [![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpineaarch64/alpine-aarch64-transmission.svg?style=flat-square)](https://hub.docker.com/r/forumi0721alpineaarch64/alpine-aarch64-transmission/) [![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpineaarch64/alpine-aarch64-transmission.svg?style=flat-square)](https://hub.docker.com/r/forumi0721alpineaarch64/alpine-aarch64-transmission/)
+![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/forumi0721alpineaarch64/alpine-aarch64-transmission/latest)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721alpineaarch64/alpine-aarch64-transmission/latest)
+![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/forumi0721alpineaarch64/alpine-aarch64-transmission/latest)
+![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpineaarch64/alpine-aarch64-transmission)
+![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpineaarch64/alpine-aarch64-transmission)
 #### [alpine-armhf-transmission](https://hub.docker.com/r/forumi0721alpinearmhf/alpine-armhf-transmission/)
-[![](https://images.microbadger.com/badges/version/forumi0721alpinearmhf/alpine-armhf-transmission.svg)](https://microbadger.com/images/forumi0721alpinearmhf/alpine-armhf-transmission "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/forumi0721alpinearmhf/alpine-armhf-transmission.svg)](https://microbadger.com/images/forumi0721alpinearmhf/alpine-armhf-transmission "Get your own image badge on microbadger.com") [![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpinearmhf/alpine-armhf-transmission.svg?style=flat-square)](https://hub.docker.com/r/forumi0721alpinearmhf/alpine-armhf-transmission/) [![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpinearmhf/alpine-armhf-transmission.svg?style=flat-square)](https://hub.docker.com/r/forumi0721alpinearmhf/alpine-armhf-transmission/)
+![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/forumi0721alpinearmhf/alpine-armhf-transmission/latest)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721alpinearmhf/alpine-armhf-transmission/latest)
+![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/forumi0721alpinearmhf/alpine-armhf-transmission/latest)
+![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpinearmhf/alpine-armhf-transmission)
+![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpinearmhf/alpine-armhf-transmission)
 
 
 
@@ -16,17 +28,12 @@
 * Architecture : x64,aarch64,armhf
 * Appplication : [Transmission](https://transmissionbt.com/)
     - Transmission is a cross-platform BitTorrent client.
-* Base Image
-    - [forumi0721/alpine-x64-base](https://hub.docker.com/r/forumi0721/alpine-x64-base/)
-    - [forumi0721/alpine-aarch64-base](https://hub.docker.com/r/forumi0721/alpine-aarch64-base/)
-    - [forumi0721/alpine-armhf-base](https://hub.docker.com/r/forumi0721/alpine-armhf-base/)
 
 
 
 ----------------------------------------
 #### Run
 
-* x64
 ```sh
 docker run -d \
            -p 9091:9091/tcp \
@@ -37,35 +44,7 @@ docker run -d \
            -e USER_NAME=username \
            -e USER_PASSWD=passwd \
            -e TR_DOWNLOAD_DIR=/data \
-           forumi0721alpinex64/alpine-x64-transmission:latest
-```
-
-* aarch64
-```sh
-docker run -d \
-           -p 9091:9091/tcp \
-           -p 51413:51413/tcp \
-           -p 51413:51413/udp \
-           -v /data:/data \
-           -v /conf.d:/conf.d \
-           -e USER_NAME=username \
-           -e USER_PASSWD=passwd \
-           -e TR_DOWNLOAD_DIR=/data \
-           forumi0721alpineaarch64/alpine-aarch64-transmission:latest
-```
-
-* armhf
-```sh
-docker run -d \
-           -p 9091:9091/tcp \
-           -p 51413:51413/tcp \
-           -p 51413:51413/udp \
-           -v /data:/data \
-           -v /conf.d:/conf.d \
-           -e USER_NAME=username \
-           -e USER_PASSWD=passwd \
-           -e TR_DOWNLOAD_DIR=/data \
-           forumi0721alpinearmhf/alpine-armhf-transmission:latest
+           forumi0721alpine[ARCH]/alpine-[ARCH]-transmission:latest
 ```
 
 
@@ -121,11 +100,4 @@ docker run -d \
 | TR_SPEED_LIMIT_DOWN| Download limit                                   |
 | TR_SPEED_LIMIT_UP  | Upload limite                                    |
 | TR_PEER_PORT       | Peer port                                        |
-
-
-
-----------------------------------------
-* [forumi0721alpinex64/alpine-x64-transmission](https://hub.docker.com/r/forumi0721alpinex64/alpine-x64-transmission/)
-* [forumi0721alpineaarch64/alpine-aarch64-transmission](https://hub.docker.com/r/forumi0721alpineaarch64/alpine-aarch64-transmission/)
-* [forumi0721alpinearmhf/alpine-armhf-transmission](https://hub.docker.com/r/forumi0721alpinearmhf/alpine-armhf-transmission/)
 

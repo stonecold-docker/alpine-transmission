@@ -1,3 +1,5 @@
+ARG BUILD_ARCH=armhf
+
 FROM forumi0721/alpine-armhf-base:latest
 
 LABEL maintainer="forumi0721@gmail.com"

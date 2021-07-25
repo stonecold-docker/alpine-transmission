@@ -1,6 +1,6 @@
-ARG BUILD_ARCH=x64
+#ARG BUILD_TAG=latest
 
-FROM forumi0721/alpine-x64-base:latest
+FROM --platform=linux/amd64 forumi0721/alpine-base:latest
 
 LABEL maintainer="forumi0721@gmail.com"
 

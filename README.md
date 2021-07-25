@@ -1,23 +1,16 @@
 # alpine-transmission
+![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721/alpine-x64-transmission)
+![Docker Stars](https://img.shields.io/docker/stars/forumi0721/alpine-x64-transmission)
 
-#### [alpine-x64-transmission](https://hub.docker.com/r/forumi0721alpinex64/alpine-x64-transmission/)
-![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/forumi0721alpinex64/alpine-x64-transmission/latest)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721alpinex64/alpine-x64-transmission/latest)
-![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/forumi0721alpinex64/alpine-x64-transmission/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpinex64/alpine-x64-transmission)
-![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpinex64/alpine-x64-transmission)
-#### [alpine-aarch64-transmission](https://hub.docker.com/r/forumi0721alpineaarch64/alpine-aarch64-transmission/)
-![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/forumi0721alpineaarch64/alpine-aarch64-transmission/latest)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721alpineaarch64/alpine-aarch64-transmission/latest)
-![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/forumi0721alpineaarch64/alpine-aarch64-transmission/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpineaarch64/alpine-aarch64-transmission)
-![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpineaarch64/alpine-aarch64-transmission)
-#### [alpine-armhf-transmission](https://hub.docker.com/r/forumi0721alpinearmhf/alpine-armhf-transmission/)
-![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/forumi0721alpinearmhf/alpine-armhf-transmission/latest)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721alpinearmhf/alpine-armhf-transmission/latest)
-![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/forumi0721alpinearmhf/alpine-armhf-transmission/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpinearmhf/alpine-armhf-transmission)
-![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpinearmhf/alpine-armhf-transmission)
+
+
+----------------------------------------
+### x64
+![Docker Image Version](https://img.shields.io/docker/v/forumi0721/alpine-x64-transmission/latest)
+![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-x64-transmission/latest)
+### aarch64
+![Docker Image Version](https://img.shields.io/docker/v/forumi0721/alpine-aarch64-transmission/aarch64)
+![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-transmission/aarch64)
 
 
 
@@ -25,7 +18,7 @@
 #### Description
 
 * Distribution : [Alpine Linux](https://alpinelinux.org/)
-* Architecture : x64,aarch64,armhf
+* Architecture : x64,aarch64
 * Appplication : [Transmission](https://transmissionbt.com/)
     - Transmission is a cross-platform BitTorrent client.
 
@@ -44,7 +37,7 @@ docker run -d \
            -e USER_NAME=username \
            -e USER_PASSWD=passwd \
            -e TR_DOWNLOAD_DIR=/data \
-           forumi0721alpine[ARCH]/alpine-[ARCH]-transmission:latest
+           forumi0721/alpine-transmission:[ARCH_TAG]
 ```
 
 

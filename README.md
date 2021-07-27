@@ -1,15 +1,15 @@
 # alpine-transmission
-![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721/alpine-x64-transmission)
-![Docker Stars](https://img.shields.io/docker/stars/forumi0721/alpine-x64-transmission)
+![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721/alpine-transmission)
+![Docker Stars](https://img.shields.io/docker/stars/forumi0721/alpine-transmission)
 
 
 
 ----------------------------------------
 ### x64
-![Docker Image Version](https://img.shields.io/docker/v/forumi0721/alpine-x64-transmission/latest)
-![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-x64-transmission/latest)
+![Docker Image Version](https://img.shields.io/docker/v/forumi0721/alpine-transmission/latest)
+![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-transmission/latest)
 ### aarch64
-![Docker Image Version](https://img.shields.io/docker/v/forumi0721/alpine-aarch64-transmission/aarch64)
+![Docker Image Version](https://img.shields.io/docker/v/forumi0721/alpine-transmission/aarch64)
 ![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-transmission/aarch64)
 
 

@@ -4,8 +4,6 @@ set -e
 
 [ -e /usr/local/bin/docker-env ] && . /usr/local/bin/docker-env
 
-[ -x /usr/local/bin/docker-binfmt ] && /usr/local/bin/docker-binfmt
-
 [ -x /usr/local/bin/docker-run-pre ] && /usr/local/bin/docker-run-pre
 
 [ -x /usr/local/bin/docker-bootstrap ] && /usr/local/bin/docker-bootstrap

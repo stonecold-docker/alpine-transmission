@@ -3,6 +3,7 @@
 set -e
 
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Installing required packages"
+apk add --no-cache --allow-untrusted /usr/local/etc/libminiupnpc-so19-fake-1.0-r0.apk
 PKG_LIB="su-exec transmission-daemon transmission-cli"
 PKG_DEV=""
 docker-install -r -u ${PKG_LIB} ${PKG_DEV}

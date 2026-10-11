@@ -5,10 +5,10 @@
 
 
 ----------------------------------------
-### x64
-![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-transmission/x64)
-### aarch64
-![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-transmission/aarch64)
+### amd64
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721/alpine-transmission/latest?arch=amd64)
+### arm64
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721/alpine-transmission/latest?arch=arm64)
 
 
 
@@ -16,8 +16,8 @@
 #### Description
 
 * Distribution : [Alpine Linux](https://alpinelinux.org/)
-* Architecture : x64,aarch64
-* Appplication : [Transmission](https://transmissionbt.com/)
+* Architecture : amd64, arm64
+* Application : [Transmission](https://transmissionbt.com/)
     - Transmission is a cross-platform BitTorrent client.
 
 
@@ -35,7 +35,7 @@ docker run -d \
            -e USER_NAME=username \
            -e USER_PASSWD=passwd \
            -e TR_DOWNLOAD_DIR=/data \
-           forumi0721/alpine-transmission:[ARCH_TAG]
+           forumi0721/alpine-transmission:latest
 ```
 
 
